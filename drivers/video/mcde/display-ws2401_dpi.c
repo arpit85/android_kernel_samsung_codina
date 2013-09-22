@@ -1174,7 +1174,7 @@ static int __devinit ws2401_dpi_mcde_probe(
 	}
 
 #ifdef CONFIG_HAS_EARLYSUSPEND
-	lcd->earlysuspend.level   = EARLY_SUSPEND_LEVEL_DISABLE_FB - 0;
+	lcd->earlysuspend.level   = EARLY_SUSPEND_LEVEL_DISABLE_FB - 1;
 	lcd->earlysuspend.suspend = ws2401_dpi_mcde_early_suspend;
 	lcd->earlysuspend.resume  = ws2401_dpi_mcde_late_resume;
 	register_early_suspend(&lcd->earlysuspend);
