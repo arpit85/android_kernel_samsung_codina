@@ -1128,7 +1128,7 @@ static int __devinit s6d27a1_dpi_mcde_probe(
 	}
 
 #ifdef CONFIG_HAS_EARLYSUSPEND
-	lcd->earlysuspend.level   = EARLY_SUSPEND_LEVEL_DISABLE_FB - 1;
+	lcd->earlysuspend.level   = EARLY_SUSPEND_LEVEL_DISABLE_FB - 0;
 	lcd->earlysuspend.suspend = s6d27a1_dpi_mcde_early_suspend;
 	lcd->earlysuspend.resume  = s6d27a1_dpi_mcde_late_resume;
 	register_early_suspend(&lcd->earlysuspend);

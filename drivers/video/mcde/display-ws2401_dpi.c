@@ -42,7 +42,7 @@
 #include <video/mcde_display-dpi.h>
 #include <video/mcde_display_ssg_dpi.h>
 
-#define ESD_PORT_NUM 93
+#define ESD_PORT_NUM 		93
 #define SPI_COMMAND		0
 #define SPI_DATA		1
 
@@ -51,7 +51,7 @@
 #define LDI_STATE_ON		1
 #define LDI_STATE_OFF		0
 /* Taken from the programmed value of the LCD clock in PRCMU */
-#define PIX_CLK_FREQ		25000000
+#define PIX_CLK_FREQ		27687000
 #define VMODE_XRES		480
 #define VMODE_YRES		800
 #define POWER_IS_ON(pwr)	((pwr) <= FB_BLANK_NORMAL)
@@ -1174,7 +1174,7 @@ static int __devinit ws2401_dpi_mcde_probe(
 	}
 
 #ifdef CONFIG_HAS_EARLYSUSPEND
-	lcd->earlysuspend.level   = EARLY_SUSPEND_LEVEL_DISABLE_FB - 1;
+	lcd->earlysuspend.level   = EARLY_SUSPEND_LEVEL_DISABLE_FB - 0;
 	lcd->earlysuspend.suspend = ws2401_dpi_mcde_early_suspend;
 	lcd->earlysuspend.resume  = ws2401_dpi_mcde_late_resume;
 	register_early_suspend(&lcd->earlysuspend);
