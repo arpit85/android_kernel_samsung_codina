@@ -73,12 +73,6 @@
 #define DCS_CMD_WS2401_READID1	0xDA	/* Read panel ID 1 */
 #define DCS_CMD_WS2401_READID2	0xDB	/* Read panel ID 2 */
 #define DCS_CMD_WS2401_READID3	0xDC	/* Read panel ID 3 */
-#define DCS_CMD_WS2401_GAMMA_R1	0xE7	/* GAMMA(RED) */
-#define DCS_CMD_WS2401_GAMMA_R2	0xEA	/* GAMMA(RED) */
-#define DCS_CMD_WS2401_GAMMA_G1	0xE8	/* GAMMA(GREEN) */
-#define DCS_CMD_WS2401_GAMMA_G2	0xEB	/* GAMMA(GREEN) */
-#define DCS_CMD_WS2401_GAMMA_B1	0xE9	/* GAMMA(BLUE) */
-#define DCS_CMD_WS2401_GAMMA_B2	0xEC	/* GAMMA(BLUE) */
 #define DCS_CMD_WS2401_PASSWD1	0xF0	/* Password1 Command for Level2 */
 #define DCS_CMD_WS2401_DISCTL	0xF2	/* Display Control */
 #define DCS_CMD_WS2401_PWRCTL	0xF3	/* Power Control */
@@ -187,118 +181,6 @@ static const u8 DCS_CMD_SEQ_WS2401_INIT[] = {
 		0x80,
 		0x00,
 
-	DCS_CMD_SEQ_END
-};
-
-static const u8 DCS_CMD_SEQ_WS2401_GAMMA_SET[] = {
-
-	18,	DCS_CMD_WS2401_GAMMA_R1,	0x00,	/*RED1*/
-						0x5B,
-						0x41,
-						0x41,
-						0x40,
-						0x41,
-						0x3F,
-						0x39,
-						0x2F,
-						0x2C,
-						0x2C,
-						0x2B,
-						0x2B,
-						0x2F,
-						0x22,
-						0x17,
-						0x00,
-
-	18,	DCS_CMD_WS2401_GAMMA_R2,	0x00,	/*RED2*/
-						0x5B,
-						0x41,
-						0x41,
-						0x40,
-						0x41,
-						0x3F,
-						0x39,
-						0x2F,
-						0x2C,
-						0x2C,
-						0x2B,
-						0x2B,
-						0x2F,
-						0x22,
-						0x17,
-						0x00,
-
-	18,	DCS_CMD_WS2401_GAMMA_G1,	0x00,	/*GREEN1*/
-						0x59,
-						0x3F,
-						0x3F,
-						0x3E,
-						0x40,
-						0x3E,
-						0x39,
-						0x2F,
-						0x2C,
-						0x2B,
-						0x29,
-						0x25,
-						0x2A,
-						0x19,
-						0x07,
-						0x00,
-
-	18,	DCS_CMD_WS2401_GAMMA_G2,	0x00,	/*GREEN2*/
-						0x59,
-						0x3F,
-						0x3F,
-						0x3E,
-						0x40,
-						0x3E,
-						0x39,
-						0x2F,
-						0x2C,
-						0x2B,
-						0x29,
-						0x25,
-						0x2A,
-						0x19,
-						0x07,
-						0x00,
-
-	18,	DCS_CMD_WS2401_GAMMA_B1,	0x00,	/*BLUE*/
-						0x55,
-						0x3A,
-						0x3A,
-						0x3C,
-						0x3F,
-						0x3D,
-						0x38,
-						0x27,
-						0x37,
-						0x29,
-						0x27,
-						0x22,
-						0x39,
-						0x04,
-						0x03,
-						0x00,
-
-	18,	DCS_CMD_WS2401_GAMMA_B2,	0x00,	/*BLUE*/
-						0x55,
-						0x3A,
-						0x3A,
-						0x3C,
-						0x3F,
-						0x3D,
-						0x38,
-						0x27,
-						0x37,
-						0x29,
-						0x27,
-						0x22,
-						0x39,
-						0x04,
-						0x03,
-						0x00,
 	DCS_CMD_SEQ_END
 };
 
@@ -656,7 +538,6 @@ static int ws2401_dpi_ldi_init(struct ws2401_dpi *lcd)
 
 	ret |= ws2401_write_dcs_sequence(lcd, DCS_CMD_SEQ_WS2401_INIT);
 
-		ret |= ws2401_write_dcs_sequence(lcd, DCS_CMD_SEQ_WS2401_GAMMA_SET);
 /*
 	if (lcd->pd->bl_ctrl)
 		ret |= ws2401_write_dcs_sequence(lcd,
@@ -887,7 +768,6 @@ static struct lcd_ops ws2401_dpi_lcd_ops = {
 struct backlight_properties ws2401_dpi_backlight_props = {
 	.brightness	= DEFAULT_BRIGHTNESS,
 	.max_brightness = MAX_BRIGHTNESS,
-	.type = BACKLIGHT_RAW,
 };
 
 static int ws2401_dpi_get_brightness(struct backlight_device *bd)
@@ -1174,7 +1054,7 @@ static int __devinit ws2401_dpi_mcde_probe(
 	}
 
 #ifdef CONFIG_HAS_EARLYSUSPEND
-	lcd->earlysuspend.level   = EARLY_SUSPEND_LEVEL_DISABLE_FB - 1;
+	lcd->earlysuspend.level   = EARLY_SUSPEND_LEVEL_DISABLE_FB - 0;
 	lcd->earlysuspend.suspend = ws2401_dpi_mcde_early_suspend;
 	lcd->earlysuspend.resume  = ws2401_dpi_mcde_late_resume;
 	register_early_suspend(&lcd->earlysuspend);
