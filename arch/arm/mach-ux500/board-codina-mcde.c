@@ -137,7 +137,6 @@ struct ssg_dpi_display_platform_data codina_dpi_pri_display_info = {
 	.bl_ctrl		= false,
 	.power_on_delay		= 5,  /* Optimize Wake Up */
 	.reset_delay		= 5,  /* Optimize Wake Up */
-	.sleep_out_delay	= 20, /* Optimize Wake Up */
 
 	.display_off_delay	= 25,
 	.sleep_in_delay		= 120,
@@ -466,7 +465,7 @@ int __init init_codina_display_devices(void)
 		codina_dpi_pri_display_info.video_mode.hfp = 8;
 		codina_dpi_pri_display_info.video_mode.vsw = 2;
 		codina_dpi_pri_display_info.video_mode.vbp = 8;
-		codina_dpi_pri_display_info.video_mode.vfp = 18;
+		codina_dpi_pri_display_info.video_mode.vfp = 8;
 		codina_dpi_pri_display_info.sleep_out_delay = 50;
 	} else {
 		generic_display0.name = LCD_DRIVER_NAME_S6D27A1;
