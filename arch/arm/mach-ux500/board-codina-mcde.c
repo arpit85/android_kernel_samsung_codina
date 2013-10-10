@@ -465,8 +465,8 @@ int __init init_codina_display_devices(void)
 		codina_dpi_pri_display_info.video_mode.hfp = 8;
 		codina_dpi_pri_display_info.video_mode.vsw = 2;
 		codina_dpi_pri_display_info.video_mode.vbp = 8;
-		codina_dpi_pri_display_info.video_mode.vfp = 8;
-		codina_dpi_pri_display_info.sleep_out_delay = 50;
+		codina_dpi_pri_display_info.video_mode.vfp = 18;
+		codina_dpi_pri_display_info.sleep_out_delay = 20;
 	} else {
 		generic_display0.name = LCD_DRIVER_NAME_S6D27A1;
 		codina_dpi_pri_display_info.video_mode.hsw = 2;
