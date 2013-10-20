@@ -22,7 +22,7 @@
 
 /* Electron beam animation fix (CRT-OFF EFFECT) taken from cocafe */
 
-bool fbdelay = true;
+bool fbdelay = false;
 unsigned int fbdelay_ms = 350;
 
 module_param(fbdelay, bool, 0644);
