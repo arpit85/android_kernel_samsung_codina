@@ -60,8 +60,8 @@
 #define MAX_BRIGHTNESS		255
 #define DEFAULT_BRIGHTNESS	120
 
-#define DCS_CMD_COLMOD		0x70	/* Set Pixel Format */
-#define DCS_CMD_WS2401_RESCTL	0x12	/* Resolution Select Control */
+#define DCS_CMD_COLMOD		0x3A	/* Set Pixel Format */
+#define DCS_CMD_WS2401_RESCTL	0xB8	/* Resolution Select Control */
 #define DCS_CMD_WS2401_PSMPS	0xBD	/* SMPS Positive Control */
 #define DCS_CMD_WS2401_NSMPS	0xBE	/* SMPS Negative Control */
 #define DCS_CMD_WS2401_SMPS	0xBF
