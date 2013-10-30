@@ -60,7 +60,8 @@
 #define MAX_BRIGHTNESS		255
 #define DEFAULT_BRIGHTNESS	120
 
-#define DCS_CMD_WS2401_RESCTL	0xB3	/* Resolution Select Control */
+#define DCS_CMD_COLMOD          0x3A    /* Set Pixel Format */
+#define DCS_CMD_WS2401_RESCTL	0xB8	/* Resolution Select Control */
 #define DCS_CMD_WS2401_PSMPS	0xBD	/* SMPS Positive Control */
 #define DCS_CMD_WS2401_NSMPS	0xBE	/* SMPS Negative Control */
 #define DCS_CMD_WS2401_SMPS	0xBF
@@ -133,10 +134,11 @@ static const u8 DCS_CMD_SEQ_WS2401_INIT[] = {
 /*	Length	Command				Parameters */
 	3,	DCS_CMD_WS2401_PASSWD1,		0x5A,	/* Unlock L2 Cmds */
 						0x5A,
-	2,	DCS_CMD_WS2401_RESCTL,		0x22,	/* 480RGB x 800 */
+	2,	DCS_CMD_WS2401_RESCTL,		0x12,	/* 480RGB x 800 */
 	/* Flip V(d0), Flip H(d1), RGB/BGR(d3) */
 	2,	DCS_CMD_SET_ADDRESS_MODE,	0x08,
 	/* 0x60=262K Colour(=18 bit/pixel), 0x70=16.7M Colour(=24 bit/pixel) */
+	2,      DCS_CMD_COLMOD,                 0x70,
 	3,	DCS_CMD_WS2401_SMPS,		0x00,	/*SMPS Block init*/
 						0x0F,
 	7,	DCS_CMD_WS2401_PSMPS,		0x06,
