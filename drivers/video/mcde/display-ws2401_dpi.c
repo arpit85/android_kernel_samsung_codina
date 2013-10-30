@@ -60,7 +60,6 @@
 #define MAX_BRIGHTNESS		255
 #define DEFAULT_BRIGHTNESS	120
 
-#define DCS_CMD_COLMOD		0x3A	/* Set Pixel Format */
 #define DCS_CMD_WS2401_RESCTL	0xB8	/* Resolution Select Control */
 #define DCS_CMD_WS2401_PSMPS	0xBD	/* SMPS Positive Control */
 #define DCS_CMD_WS2401_NSMPS	0xBE	/* SMPS Negative Control */
@@ -78,7 +77,7 @@
 #define DCS_CMD_WS2401_PWRCTL	0xF3	/* Power Control */
 #define DCS_CMD_WS2401_VCOMCTL	0xF4	/* VCOM Control */
 #define DCS_CMD_WS2401_SRCCTL	0xF5	/* Source Control */
-#define DCS_CMD_WS2401_PANELCTL 0xF6	/*Panel Control*/
+#define DCS_CMD_WS2401_PANELCTL 0xF6	/* Panel Control */
 
 
 #define DCS_CMD_SEQ_DELAY_MS	0xFE
@@ -138,8 +137,6 @@ static const u8 DCS_CMD_SEQ_WS2401_INIT[] = {
 	/* Flip V(d0), Flip H(d1), RGB/BGR(d3) */
 	2,	DCS_CMD_SET_ADDRESS_MODE,	0x08,
 	/* 0x60=262K Colour(=18 bit/pixel), 0x70=16.7M Colour(=24 bit/pixel) */
-	2,	DCS_CMD_COLMOD,			0x70,
-
 	3,	DCS_CMD_WS2401_SMPS,		0x00,	/*SMPS Block init*/
 						0x0F,
 	7,	DCS_CMD_WS2401_PSMPS,		0x06,
@@ -176,10 +173,10 @@ static const u8 DCS_CMD_SEQ_WS2401_INIT[] = {
 						0x00,
 						0x06,
 						0x03,
-	5,	DCS_CMD_WS2401_PANELCTL, 0x34,
-		0x00,
-		0x80,
-		0x00,
+	5,	DCS_CMD_WS2401_PANELCTL,        0x34,
+						0x00,
+						0x80,
+						0x00,
 
 	DCS_CMD_SEQ_END
 };
